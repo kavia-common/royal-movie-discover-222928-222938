@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ocean Professional Theme Defaults */
+:root {
+  --color-primary: #2563EB;
+  --color-secondary: #F59E0B;
+  --color-error: #EF4444;
+  --color-background: #f9fafb;
+  --color-surface: #ffffff;
+  --color-text: #111827;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Base styles */
+html, body, #root {
+  height: 100%;
+}
+body {
+  @apply bg-[var(--color-background)] text-[var(--color-text)];
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Focus ring utility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Gradient header background helper */
+.header-gradient {
+  @apply bg-gradient-to-r from-blue-500/10 to-gray-50;
 }

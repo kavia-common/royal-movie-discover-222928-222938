@@ -1,0 +1,7 @@
+/* Additional theme utilities if needed */
+.card {
+  @apply bg-surface rounded-xl shadow-soft transition transform hover:-translate-y-0.5 hover:shadow-lg;
+}
+.badge {
+  @apply inline-flex items-center rounded-full bg-blue-50 text-primary px-2 py-0.5 text-xs font-medium;
+}

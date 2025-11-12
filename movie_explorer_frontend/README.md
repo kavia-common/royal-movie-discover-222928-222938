@@ -1,82 +1,54 @@
-# Lightweight React Template for KAVIA
+# Movie Explorer Frontend (Ocean Professional Theme)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A modern, responsive React web app for discovering movies. Includes search with debounced input, responsive results grid, modal details, accessibility, and Tailwind CSS with the Ocean Professional palette.
+
+## Quick Start
+
+- Requirements: Node.js 16+ recommended
+- Install dependencies:
+  - npm install
+- Start the dev server (port 3000):
+  - npm start
+- Build for production:
+  - npm run build
+- Run tests:
+  - npm test
+
+Open http://localhost:3000 to view the app.
+
+## Environment Variables
+
+Create a `.env` (see `.env.example`):
+
+- REACT_APP_API_BASE: Base URL for movie search API (e.g., https://api.example.com). If not set, the app will use a mock data provider so you can still see results.
+- REACT_APP_FEATURE_FLAGS: JSON string for feature toggles, e.g. {"enableDetailsModal": true}
+- REACT_APP_LOG_LEVEL: debug | info | warn (default warn). Only minimal debug logs are printed and only when set to debug.
+
+Other variables present in the environment are not required for this app but may be used by hosting infrastructure.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Tailwind CSS with Ocean Professional theme:
+  - Primary #2563EB, Secondary #F59E0B, Error #EF4444, Background #f9fafb, Text #111827
+- Components:
+  - SearchBar, MovieGrid, MovieCard, MovieDetailModal, LoadingSkeleton, EmptyState, ErrorBanner
+- Accessibility:
+  - ARIA labels for search and alerts, keyboard focus trap in modal, alt text for posters, keyboard navigation on cards (Enter/Space)
+- API client with graceful fallback:
+  - src/api/client.ts reads REACT_APP_API_BASE and uses fetch with timeout (AbortController)
+  - Falls back to curated mock data when API base is missing or request fails
 
-## Getting Started
+## Project Structure
 
-In the project directory, you can run:
+- src/components/* — UI components
+- src/api/client.ts — API client and mock provider
+- src/types/movie.ts — Movie type definition
+- tailwind.config.js — Theme configuration
+- postcss.config.js — Tailwind/PostCSS
+- src/styles/theme.css — Utility theme classes
+- src/index.css — Tailwind layers + global styles
 
-### `npm start`
+## Notes
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- No secrets are hardcoded. Configure runtime URLs via environment variables.
+- The app preserves the default CRA start script; it runs on port 3000 as required.
